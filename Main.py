@@ -91,3 +91,14 @@ for epoch in range(2):
     optimizer.apply_gradients(zip(gradients, model.trainable_variables))
     # Print the loss
     print(f'Epoch: {epoch}, Loss: {loss.numpy()}')
+
+
+
+
+
+
+z = model(conflicts_tensor)
+
+# convert first prediction to seating arrangement of 6X4
+q = tf.reshape(tf.argmax(z[0]), (6,4))
+print(np.unique(q).size, q)
